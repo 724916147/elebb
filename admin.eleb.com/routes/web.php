@@ -16,6 +16,13 @@ Route::get('/', function () {
 });
 Route::resource('ShopCategories','ShopCategoryController');
 Route::resource('Shops','ShopController');
+Route::resource('Admins','AdminController');
+Route::resource('Users','UserController');
+Route::get('/Shops/up/{Shop}', 'ShopController@up')->name('Shops.up');
+Route::get('/Shops/stop/{Shop}', 'ShopController@stop')->name('Shops.stop');
+Route::get('login','LoginController@create')->name('login');
+Route::post('login','LoginController@store')->name('login');
+Route::get('logout','LoginController@destroy')->name('logout');
 //Route::get('/users', 'UsersController@index')->name('users.index');//用户列表
 //Route::get('/users/{user}', 'UsersController@show')->name('users.show');//查看单个用户信息
 //Route::get('/users/create', 'UsersController@create')->name('users.create');//显示添加表单

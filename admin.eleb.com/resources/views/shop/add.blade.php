@@ -2,6 +2,7 @@
 @section('contents')
     @if (count($errors) > 0)
         <div class="alert alert-danger">
+            <p>请修正以下信息</p>
             <ul>
                 @foreach($errors->all() as $error)
                     <li>{{ $error }}</li>
@@ -13,15 +14,36 @@
     <form method="post" action="{{route('Shops.store')}}" enctype="multipart/form-data">
         <div class="form-group row">
             <div class="col-xs-6">
-                <label for="exampleInputEmail1">商户分类</label>
+                <label for="exampleInputEmail1">商家名称</label>
+                <input name="name" type="text" class="form-control" id="exampleInputEmail1" placeholder="商家名称" value="{{old('name')}}">
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-xs-6">
+                <label for="exampleInputEmail1">商家邮箱</label>
+                <input name="email" type="email" class="form-control" id="exampleInputEmail1" placeholder="商家邮箱" value="{{old('email')}}">
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-xs-6">
+                <label for="exampleInputEmail1">商家密码</label>
+                <input name="password" type="password" class="form-control" id="exampleInputEmail1" placeholder="商家密码" value="{{old('password')}}">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-xs-6">
+                <label for="exampleInputEmail1">店铺分类</label>
                 <select class="form-control " name="shop_category_id">
-                    <option>1</option>
+                    @foreach($ShopCategories as $ShopCategory)
+                    <option value="{{$ShopCategory->id}}">{{$ShopCategory->name}}</option>
+                        @endforeach
                 </select>
             </div>
         </div>
         <div class="form-group row">
             <div class="col-xs-6">
-                <label for="exampleInputEmail1">商户名称</label>
+                <label for="exampleInputEmail1">店铺名称</label>
                 <input name="shop_name" type="text" class="form-control" id="exampleInputEmail1" placeholder="分类名称" value="{{old('shop_name')}}">
             </div>
         </div>

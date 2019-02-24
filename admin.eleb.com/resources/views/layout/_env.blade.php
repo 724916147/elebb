@@ -20,7 +20,7 @@
                         <li><a href="{{route('Shops.index')}}">商户列表</a></li>
                         <li><a href="{{route('Shops.create')}}">添加商户</a></li>
                         <li role="separator" class="divider"></li>
-                        <li><a href="">商品分类</a></li>
+                        <li><a href="{{route('Users.index')}}">商户账号管理</a></li>
                         <li><a href="">添加商品分类</a></li>
                         <li role="separator" class="divider"></li>
                         <li><a href="">会员列表</a></li>
@@ -49,15 +49,15 @@
                 <button type="submit" class="btn btn-default glyphicon glyphicon-search"></button>
             </form>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="">添加管理员</a></li>
+                <li><a href="{{route('Admins.create')}}">添加管理员</a></li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="caret"></span></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{auth()->user()->name??''}}<span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="">用户列表</a></li>
                         <li><a href="">个人信息</a></li>
-                        <li><a href="#">Something else here</a></li>
+                        <li><a href="#"></a></li>
                         <li role="separator" class="divider"></li>
-                        <li><a href="">退出登录</a></li>
+                        <li><a href="{{route('logout')}}">退出登录</a></li>
                     </ul>
                 </li>
             </ul>
