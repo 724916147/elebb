@@ -65,7 +65,7 @@ class ShopController extends Controller
             ]
         );
         $file = $request->file('shop_img');
-        $path = url(Storage::url($file->store('public/shop')));
+        $path = Storage::url($file->store('public/shop'));
         $data = [
             'shop_category_id' => $request->shop_category_id,
             'shop_name' => $request->shop_name,
@@ -137,9 +137,11 @@ class ShopController extends Controller
                 'discount.required' => '优惠信息不能为空',
             ]
         );
+
+
         $file = $request->file('shop_img');
         if ($file) {
-            $path = url(Storage::url($file->store('public/shop')));
+            $path = Storage::url($file->store('public/shop'));
         } else {
             $path = $Shop->shop_img;
         }

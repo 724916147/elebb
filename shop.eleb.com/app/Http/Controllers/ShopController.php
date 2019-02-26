@@ -6,6 +6,7 @@ use App\Models\shop;
 use App\Models\ShopCategory;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 
@@ -59,38 +60,43 @@ class ShopController extends Controller
                 'discount.required' => '优惠信息不能为空',
             ]
         );
-        $file = $request->file('shop_img');
-        $path = url(Storage::url($file->store('public/shop')));
-        $data = [
-            'shop_category_id' => $request->shop_category_id,
-            'shop_name' => $request->shop_name,
-            'shop_img' => $path,
-            'shop_rating' => $request->shop_rating,
-            'brand' => $request->brand,
-            'on_time' => $request->on_time,
-            'fengniao' => $request->fengniao,
-            'bao' => $request->bao,
-            'piao' => $request->piao,
-            'zhun' => $request->zhun,
-            'start_send' => $request->start_send,
-            'send_cost' => $request->send_cost,
-            'notice' => $request->notice,
-            'discount' => $request->discount,
-            'status' => 0,
-        ];
-        $shop = shop::create($data);
-        $data1 = [
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-            'status' => 1,
-            'remember_token' => '',
-            'shop_id' => $shop->id,
-        ];
-        User::create($data1);
-        session()->flash('success', '注册成功');
-        return redirect()->route('login');
-    }
+
+        DB::transaction(function () use ($request) {
+            $file = $request->file('shop_img');
+            $path = url(Storage::url($file->store('public/shop')));
+            $data = [
+                'shop_category_id' => $request->shop_category_id,
+                'shop_name' => $request->shop_name,
+                'shop_img' => $path,
+                'shop_rating' => $request->shop_rating,
+                'brand' => $request->brand,
+                'on_time' => $request->on_time,
+                'fengniao' => $request->fengniao,
+                'bao' => $request->bao,
+                'piao' => $request->piao,
+                'zhun' => $request->zhun,
+                'start_send' => $request->start_send,
+                'send_cost' => $request->send_cost,
+                'notice' => $request->notice,
+                'discount' => $request->discount,
+                'status' => 0,
+            ];
+            $shop = shop::create($data);
+            $data1 = [
+                'name' => $request->name,
+                'email' => $request->email,
+                'password' => Hash::make($request->password),
+                'status' => 1,
+                'remember_token' => '',
+                'shop_id' => $shop->id,
+            ];
+            User::create($data1);
+            session()->flash('success', '注册成功');
+            return redirect()->route('login');
+        });
+
+        }
+
     public function show(Shop $Shop)
     {
         return view('shop.show', compact('Shop'));
@@ -101,6 +107,7 @@ class ShopController extends Controller
         $ShopCategories = ShopCategory::all();
         return view('shop.edit', compact('Shop', 'ShopCategories'));
     }
+
 
     public function update(Request $request, Shop $Shop)
     {

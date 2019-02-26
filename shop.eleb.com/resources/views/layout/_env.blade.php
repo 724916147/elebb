@@ -15,22 +15,30 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">商户 <span class="caret"></span></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">菜品分类 <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="">商户列表</a></li>
-                        <li><a href="">添加商户</a></li>
-                        <li role="separator" class="divider"></li>
-
+                        <li><a href="{{route('MenuCategories.index')}}">菜品分类列表</a></li>
+                        <li><a href="{{route('MenuCategories.create')}}">添加菜品分类</a></li>
+                        <li role="separator" class="ividerd"></li>
                     </ul>
                 </li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">商户分类 <span class="caret"></span></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">商品 <span class="caret"></span></a>
                     <ul class="dropdown-menu">
+                        <li><a href="{{route('Menus.index')}}">商品列表</a></li>
+                        <li><a href="{{route('Menus.create')}}">添加商品</a></li>
                         <li role="separator" class="divider"></li>
                     </ul>
-                </li>
-                <li><a href="">商品</a></li>
 
+                </li>
+                <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">商品 <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="{{route('Activities.index')}}">活动列表</a></li>
+                    <li><a href="{{route('Activities.create')}}">添加活动</a></li>
+                    <li role="separator" class="divider"></li>
+                </ul>
+                </li>
             </ul>
             <form class="navbar-form navbar-left" action="" method="post">
                 <div class="form-group">
@@ -46,7 +54,7 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{auth()->user()->name}}<span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="{{route('Users.show',[auth()->user()])}}">个人信息</a></li>
-                        <li><a href="#">修改密码</a></li>
+                        <li><a href="{{route('password.edit')}}">修改密码</a></li>
                         <li role="separator" class="divider"></li>
                         <li><a href="{{route('logout')}}">退出登录</a></li>
                     </ul>

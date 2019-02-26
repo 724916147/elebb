@@ -17,6 +17,13 @@ Route::get('/', function () {
 });
 Route::resource('Shops','ShopController');
 Route::resource('Users','UserController');
+Route::resource('MenuCategories','MenuCategoryController');
+Route::resource('Menus','MenuController');
+Route::resource('Activities','ActivityController');
+
+Route::get('/password/edit','UserController@edit')->name('password.edit');
+Route::get('/MenuCategories/default/{menu_category}','MenuCategoryController@default')->name('MenuCategories.default');
+Route::post('/password/update','UserController@update')->name('password.update');
 Route::get('login','LoginController@create')->name('login');
 Route::post('login','LoginController@store')->name('login');
 Route::get('logout','LoginController@destroy')->name('logout');

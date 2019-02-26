@@ -10,6 +10,13 @@
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
 
+    <!--引入CSS-->
+    <link rel="stylesheet" type="text/css" href="/web/webuploader.css">
+
+    <!--引入JS-->
+    <script type="text/javascript" src="/web/webuploader.js"></script>
+
+    <!--SWF在初始化的时候指定，在后面将展示-->
     <!-- HTML5 shim 和 Respond.js 是为了让 IE8 支持 HTML5 元素和媒体查询（media queries）功能 -->
     <!-- 警告：通过 file:// 协议（就是直接将 html 页面拖拽到浏览器中）访问页面时 Respond.js 不起作用 -->
     <!--[if lt IE 9]>

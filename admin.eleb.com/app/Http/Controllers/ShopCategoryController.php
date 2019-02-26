@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\ShopCategory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ShopCategoryController extends Controller
 {
@@ -26,10 +27,11 @@ class ShopCategoryController extends Controller
             'img.required'=>'请选择图片',
             'img.image'=>'请选择正确得图片',
         ]);
-        $file = $request->file('img')->store('public/shop_category');
+        $file = $request->file('img');
+        $path=Storage::url($file->store('public/shop_category'));
         $data=[
             'name'=>$request->name,
-            'img'=>$file,
+            'img'=>$path,
             'status'=>$request->status,
         ];
         ShopCategory::create($data);
@@ -45,9 +47,11 @@ class ShopCategoryController extends Controller
         ],[
             'name.required'=>'名称不能为空',
         ]);
-        $image=$request->file('img');
+
+        $image = $request->file('img');
+
         if($image){
-            $img= $image->store('public/shop_category');
+            $img=Storage::url($image->store('public/shop_category'));
         }else{
             $img=$ShopCategory->img;
         }

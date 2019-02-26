@@ -18,6 +18,7 @@ Route::resource('ShopCategories','ShopCategoryController');
 Route::resource('Shops','ShopController');
 Route::resource('Admins','AdminController');
 Route::resource('Users','UserController');
+Route::resource('Activities','ActivityController');
 Route::get('/Shops/up/{Shop}', 'ShopController@up')->name('Shops.up');
 Route::get('/Shops/stop/{Shop}', 'ShopController@stop')->name('Shops.stop');
 Route::get('login','LoginController@create')->name('login');

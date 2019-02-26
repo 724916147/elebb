@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
@@ -42,6 +43,32 @@ class UserController extends Controller
     }
     public function show(){
         return view('user.show');
+    }
+    public function edit(){
+        return view('user.edit');
+    }
+    public function update(Request $request){
+        $this->validate($request,[
+            'old_password'=>'required',
+            'new_password'=>'required|confirmed',
+            'new_password_confirmation'=>'required',
+            'captcha'=>'required|captcha',
+        ],[
+            'old_password.required'=>'旧密码不能为空',
+            'new_password.required'=>'新密码不能为空',
+            'new_password.confirmed'=>'两次密码不一致',
+            'new_password_confirmation.required'=>'确认密码不能为空',
+            'captcha.required'=>'验证码不能为空',
+            'captcha.captcha'=>'验证码不正确',
+        ]);
+        if (Hash::check($request->old_password, auth()->user()->password)) {
+           auth()->user()->update([
+               'password'=> Hash::make($request->new_password),
+           ]);
+            Auth::logout();
+            return redirect()->route('login')->with('success','修改密码成功');
+        }
+        return redirect()->back()->with('success','旧密码不正确');
     }
 
 }

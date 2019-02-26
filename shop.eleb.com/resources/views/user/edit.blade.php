@@ -10,24 +10,33 @@
         </div>
     @endif
 
-    <form method="post" action="{{route('users.update',[$user])}}" enctype="multipart/form-data">
-        <div class="form-group">
-            <label for="exampleInputEmail1">姓名</label>
-            <input name="name" type="text" class="form-control" id="exampleInputEmail1" value="{{$user->name}}">
+    <form method="post" action="{{route('password.update')}}" enctype="multipart/form-data">
+        <div class="form-group row">
+            <div class="col-xs-6">
+                <label for="exampleInputEmail1">旧密码</label>
+                <input name="old_password" type="text" class="form-control" id="exampleInputEmail1" >
+            </div>
         </div>
-        <div class="form-group">
-            <label for="exampleInputFile">选择商品图品</label>
-            <input type="file" id="exampleInputFile" name="img">
-            <img src="{{ $user->image() }}" width="30px">
-            <p class="help-block">图片不能为空</p>
+        <div class="form-group row">
+            <div class="col-xs-6">
+                <label for="exampleInputEmail1">新密码</label>
+                <input name="new_password" type="text" class="form-control" id="exampleInputEmail1" >
+            </div>
         </div>
-        <div class="form-group">
-            <label for="exampleInputEmail1">验证码</label>
-            <input id="captcha" class="form-control" name="captcha"  style="width: 200px">
+        <div class="form-group row">
+            <div class="col-xs-6">
+                <label for="exampleInputEmail1">确认密码</label>
+                <input name="new_password_confirmation" type="text" class="form-control" id="exampleInputEmail1" >
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-xs-6">
+                <label for="exampleInputEmail1">验证码</label>
+                <input name="captcha" type="text" class="form-control" id="exampleInputEmail1">
+            </div>
         </div>
         <img class="thumbnail captcha" src="{{ captcha_src('default') }}" onclick="this.src='/captcha/default?'+Math.random()" title="点击图片重新获取验证码">
         {{ csrf_field() }}
-        {{method_field('patch')}}
         <button type="submit" class="btn btn-default">提交</button>
     </form>
     {{--主体结束--}}

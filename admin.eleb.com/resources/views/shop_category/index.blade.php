@@ -22,7 +22,7 @@
             <tr>
                 <td>{{$ShopCategory->id}}</td>
                 <td>{{ $ShopCategory->name }}</td>
-                <td><img src="{{ $ShopCategory->img() }}" width="30px"></td>
+                <td><img src="{{ $ShopCategory->img}}" width="30px"></td>
                 <td>{{$ShopCategory->status? '显示': '隐藏'}}</td>
                 <td>
                     <a href="{{route('ShopCategories.edit',[$ShopCategory]) }}" class="btn btn-warning"> 修改</a>

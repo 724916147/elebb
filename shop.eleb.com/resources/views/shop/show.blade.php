@@ -12,7 +12,7 @@
     </div>
         <div class="form-group row">
             <div class="col-xs-6">
-                <label for="exampleInputEmail1">店铺名称:{{$Shop->shop_name}}</label>
+                <label for="exampleInputEmail1">名称:{{$Shop->shop_name}}</label>
             </div>
         </div>
         <div class="form-group row">
