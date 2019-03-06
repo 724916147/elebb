@@ -20,13 +20,19 @@ Route::resource('Users','UserController');
 Route::resource('MenuCategories','MenuCategoryController');
 Route::resource('Menus','MenuController');
 Route::resource('Activities','ActivityController');
-
+Route::resource('Activities','ActivityController');
 Route::get('/password/edit','UserController@edit')->name('password.edit');
 Route::get('/MenuCategories/default/{menu_category}','MenuCategoryController@default')->name('MenuCategories.default');
 Route::post('/password/update','UserController@update')->name('password.update');
 Route::get('login','LoginController@create')->name('login');
 Route::post('login','LoginController@store')->name('login');
 Route::get('logout','LoginController@destroy')->name('logout');
+Route::get('/order/list','OrderController@orderList')->name('order.list');
+Route::get('/order/list','OrderController@orderList')->name('order.list');
+Route::get('/order/show/{order}','OrderController@show')->name('order.show');
+Route::get('/order/cancel/{order}','OrderController@cancel')->name('order.cancel');
+Route::get('/order/count','OrderController@count')->name('order.count');
+Route::get('/order/goods','OrderController@goods')->name('order.goods');
 //Route::get('/users', 'UsersController@index')->name('users.index');//用户列表
 //Route::get('/users/{user}', 'UsersController@show')->name('users.show');//查看单个用户信息
 //Route::get('/users/create', 'UsersController@create')->name('users.create');//显示添加表单

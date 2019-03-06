@@ -21,6 +21,7 @@ class LoginController extends Controller
         if(Auth::attempt([
             'name'=>$request->name,
             'password'=>$request->password,
+            'status'=>1,
         ],$request->has('rememberMe'))){//账号密码正确 ，创建会话（保存当前用户的信息到session）
             return redirect()->intended(route('Shops.index'))->with('success','登录成功');
         }else{//账号密码不正确

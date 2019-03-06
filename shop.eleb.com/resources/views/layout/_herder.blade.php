@@ -9,12 +9,11 @@
 
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
-
+    <script src="https://cdn.bootcss.com/echarts/4.1.0-release/echarts-en.common.js"></script>
     <!--引入CSS-->
-    <link rel="stylesheet" type="text/css" href="/web/webuploader.css">
-
+    <link rel="stylesheet" type="text/css" href="/webuploader/webuploader.css">
     <!--引入JS-->
-    <script type="text/javascript" src="/web/webuploader.js"></script>
+    <script type="text/javascript" src="/webuploader/webuploader.js"></script>
 
     <!--SWF在初始化的时候指定，在后面将展示-->
     <!-- HTML5 shim 和 Respond.js 是为了让 IE8 支持 HTML5 元素和媒体查询（media queries）功能 -->

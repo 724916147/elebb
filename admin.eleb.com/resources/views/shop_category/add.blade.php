@@ -27,7 +27,17 @@
         </div>
         <div class="form-group">
             <label for="exampleInputFile">分类图片</label>
-            <input type="file" id="exampleInputFile" name="img">
+            <div class="form-group">
+                <input type="hidden" name="img" id="img_val">
+            </div>
+            <div id="uploader-demo">
+                <!--用来存放item-->
+                <div id="fileList" class="uploader-list"></div>
+                <div id="filePicker">选择图片</div>
+                <img src="" id="img"  width="150px"/>
+            </div>
+
+        </div>
             <p class="help-block">图片不能为空</p>
         </div>
         {{ csrf_field() }}

@@ -8,6 +8,10 @@ use Illuminate\Support\Facades\Storage;
 
 class ShopCategoryController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     //
     public function index(){
         $ShopCategories=ShopCategory::all();
@@ -20,18 +24,15 @@ class ShopCategoryController extends Controller
         //表单验证
         $this->validate($request, [
             'name' => 'required',
-            'img' => 'required|image',
+            'img' => 'required',
             'status' => 'required',
         ],[
             'name.required'=>'名称不能为空',
             'img.required'=>'请选择图片',
-            'img.image'=>'请选择正确得图片',
         ]);
-        $file = $request->file('img');
-        $path=Storage::url($file->store('public/shop_category'));
         $data=[
             'name'=>$request->name,
-            'img'=>$path,
+            'img'=>$request->img,
             'status'=>$request->status,
         ];
         ShopCategory::create($data);
@@ -67,5 +68,11 @@ class ShopCategoryController extends Controller
         $ShopCategory->delete();
         session()->flash('danger','商品删除成功');
         return redirect()->route('ShopCategories.index');
+    }
+    public function upload(Request $request){
+        $img=$request->file('file');
+        $path=Storage::url($img->store('public/shop_category'));
+        return ['path'=>$path];
+
     }
 }

@@ -32,12 +32,22 @@
 
                 </li>
                 <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">商品 <span class="caret"></span></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">平台活动 <span class="caret"></span></a>
                 <ul class="dropdown-menu">
                     <li><a href="{{route('Activities.index')}}">活动列表</a></li>
-                    <li><a href="{{route('Activities.create')}}">添加活动</a></li>
+                    {{--<li><a href="{{route('Activities.create')}}">添加活动</a></li>--}}
                     <li role="separator" class="divider"></li>
                 </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">订单管理 <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{{route('order.list')}}">订单列表</a></li>
+                        <li><a href="{{route('order.count')}}">订单量统计</a></li>
+                        <li><a href="{{route('order.goods')}}">商品销售统计</a></li>
+                        {{--<li><a href="{{route('Activities.create')}}">添加活动</a></li>--}}
+                        <li role="separator" class="divider"></li>
+                    </ul>
                 </li>
             </ul>
             <form class="navbar-form navbar-left" action="" method="post">

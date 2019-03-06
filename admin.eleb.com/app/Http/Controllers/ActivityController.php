@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 
 class ActivityController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth',['except'=>['create','store']]);
+    }
     //
     public function index(Request $request){
         if($request->time==1){

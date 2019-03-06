@@ -12,6 +12,11 @@ use Illuminate\Support\Facades\Storage;
 
 class ShopController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth',['except'=>['create','store']]);
+    }
+
     //
     public function index(){
         $id=auth()->user()->shop_id;
@@ -61,7 +66,7 @@ class ShopController extends Controller
             ]
         );
 
-        DB::transaction(function () use ($request) {
+
             $file = $request->file('shop_img');
             $path = url(Storage::url($file->store('public/shop')));
             $data = [
@@ -93,7 +98,6 @@ class ShopController extends Controller
             User::create($data1);
             session()->flash('success', '注册成功');
             return redirect()->route('login');
-        });
 
         }
 
