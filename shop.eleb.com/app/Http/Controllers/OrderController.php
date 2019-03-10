@@ -106,17 +106,36 @@ class OrderController extends Controller
                     $app[$order->goods_name][$daa] = 0;
                 }
             }
-           // dd($app);
             foreach ($orders as $order) {
                 $app[$order->goods_name][$order->time] = $order->amount;
             }
             for($i = 2; $i >= 0; $i--) {
                 $dd = date("Y-m", strtotime(-$i . " month"));
                 $days[] = $dd;
+                $s[]=[
+
+                ];
             }
 
         }
-            return view('count.goods', compact('app', 'days'));
+        dd($orders);
+
+        $s = [
+            [
+                'name'=>'王大哥',
+                'type'=>'line',
+                'stack'=> '总量',
+                'data'=>[220, 182, 191, 234, 290, 330, 310] ,
+            ],
+            [
+                'name'=>'刘大哥',
+                'type'=>'line',
+                'stack'=> '总量',
+                'data'=>[220, 182, 191, 234, 290, 330, 310] ,
+            ],
+
+        ];
+            return view('count.goods', compact('app', 'days','s'));
     }
 }
 //    public function goods(Request $request){

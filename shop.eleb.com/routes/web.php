@@ -19,6 +19,7 @@ Route::resource('Shops','ShopController');
 Route::resource('Users','UserController');
 Route::resource('MenuCategories','MenuCategoryController');
 Route::resource('Menus','MenuController');
+Route::resource('event','EventController');
 Route::resource('Activities','ActivityController');
 Route::resource('Activities','ActivityController');
 Route::get('/password/edit','UserController@edit')->name('password.edit');

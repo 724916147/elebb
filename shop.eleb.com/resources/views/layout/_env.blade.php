@@ -49,6 +49,13 @@
                         <li role="separator" class="divider"></li>
                     </ul>
                 </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">抽奖 <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{{route('event.index')}}">抽奖活动</a></li>
+                        <li role="separator" class="divider"></li>
+                    </ul>
+                </li>
             </ul>
             <form class="navbar-form navbar-left" action="" method="post">
                 <div class="form-group">

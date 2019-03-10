@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\nav;
 use App\Models\ShopCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -11,6 +12,10 @@ class ShopCategoryController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+
+
+        $navs=nav::all();
+
     }
     //
     public function index(){

@@ -32,19 +32,23 @@
                     @endif
                 </td>
                 <td>
+                    @can('Shops/{Shop}')
                     <a href="{{route('Shops.show',[$shop])}}" class="btn btn-info"> 查看</a>
+                    @endcan
+                        @can('Shops/{Shop}/edit')
                     <a href="{{route('Shops.edit',[$shop])}}" class="btn btn-warning"> 修改</a>
+                        @endcan
                     <form action="{{route('Shops.destroy',[$shop])}}" method="post" style="display: inline">
                         {{csrf_field()}}
                         {{method_field('delete')}}
                         <button  type="submit" class="btn btn-danger" >删除</button>
                     </form>
                 </td>
+
                 <td>
                     <a href="{{route('Shops.up',[$shop])}}" class="btn btn-info"> 启用</a>
                     <a href="{{route('Shops.stop',[$shop])}}" class="btn btn-danger"> 停用</a>
                 </td>
-
             </tr>
         @endforeach
     </table>

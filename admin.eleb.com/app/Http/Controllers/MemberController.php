@@ -3,10 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Models\Member;
+use App\Models\nav;
 use Illuminate\Http\Request;
 
 class MemberController extends Controller
 {
+    public function __construct()
+    {
+        $navs=nav::all();
+    }
+
     //
 
     public function index(Request $request){

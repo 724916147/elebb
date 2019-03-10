@@ -12,22 +12,17 @@
 <table class="table table-hover">
     <tr>
         <th>序号</th>
-        <th>名称</th>
-        <th>头像</th>
+        <th>账号</th>
+        <th>email</th>
     </tr>
-    @foreach($users as $user)
+    @foreach($admins as $admin)
     <tr>
-        <td>{{$user->id}}</td>
-        <td>{{$user->name}}</td>
-        <td><img src="{{$user->image()}}" width="40px"> </td>
+        <td>{{$admin->id}}</td>
+        <td>{{$admin->name}}</td>
+        <td>{{$admin->email}} </td>
         <td>
-            <a href="{{route('users.show',[$user])}}" class="btn btn-info" >查看</a>
-
-            <form action="{{route('users.edit',[$user])}}" method="get" style="display: inline">
-                {{csrf_field()}}
-                <button  type="submit" class="btn btn-warning" >修改</button>
-            </form>
-            <form action="{{route('users.destroy',[$user])}}" method="post" style="display: inline">
+            <a href="{{route('Admins.edit',[$admin])}}" class="btn btn-info" >修改权限</a>
+            <form action="{{route('Admins.destroy',[$admin])}}" method="post" style="display: inline">
                 {{csrf_field()}}
                 {{method_field('delete')}}
                 <button  type="submit" class="btn btn-danger" >删除</button>

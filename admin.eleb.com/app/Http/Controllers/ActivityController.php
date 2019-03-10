@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\Activity;
+use App\Models\nav;
 use Illuminate\Http\Request;
 
 class ActivityController extends Controller
 {
     public function __construct()
     {
+        $navs=nav::all();
         $this->middleware('auth',['except'=>['create','store']]);
     }
     //

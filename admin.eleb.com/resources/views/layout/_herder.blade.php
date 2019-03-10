@@ -24,6 +24,7 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
+    <script src="https://cdn.bootcss.com/echarts/4.1.0-release/echarts-en.common.js"></script>
     <!--引入CSS-->
     <link rel="stylesheet" type="text/css" href="/webuploader/webuploader.css">
     <!--引入JS-->

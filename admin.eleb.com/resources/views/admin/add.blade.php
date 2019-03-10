@@ -30,6 +30,26 @@
             </div>
         </div>
         <div class="form-group row">
+            <div class="col-xs-6">
+                <label for="exampleInputEmail1">角色选择</label>
+                @foreach($roles as $role)
+                    <label class="checkbox-inline">
+                        <input type="checkbox" id="inlineCheckbox1" name="role[]" value="{{$role->id}}"> {{$role->name}}
+                    </label>
+                @endforeach
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-xs-6">
+                <label for="exampleInputEmail1">权限选择</label>
+                @foreach($permission as $per)
+                    <label class="checkbox-inline">
+                        <input type="checkbox" id="inlineCheckbox1" name="per[]" value="{{$per->id}}"> {{$per->name}}
+                    </label>
+                @endforeach
+            </div>
+        </div>
+        <div class="form-group row">
             <div class="col-xs-3">
                 <label for="exampleInputEmail1">验证码</label>
                 <input id="captcha" class="form-control" name="captcha"  >

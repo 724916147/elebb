@@ -14,10 +14,17 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/statistics/order/','StatisticsController@order')->name('statistics.order');
 Route::resource('ShopCategories','ShopCategoryController');
 Route::resource('Shops','ShopController');
 Route::resource('Admins','AdminController');
 Route::resource('Users','UserController');
+Route::resource('permission','PermissionController');
+Route::resource('role','RoleController');
+Route::resource('nav','NavController');
+Route::resource('event','EventController');
+Route::resource('event_prizes','EventPrizeController');
 Route::resource('Activities','ActivityController');
 Route::get('/Shops/up/{Shop}', 'ShopController@up')->name('Shops.up');
 Route::get('/Shops/stop/{Shop}', 'ShopController@stop')->name('Shops.stop');
@@ -29,6 +36,7 @@ Route::get('/member/list','MemberController@index')->name('member.list');
 Route::get('/member/show/{member}','MemberController@show')->name('member.show');
 Route::get('/member/up/{member}','MemberController@up')->name('member.up');
 Route::get('/member/stop/{member}','MemberController@stop')->name('member.stop');
+
 //Route::get('/member/list','MemberController@index')->name('member.list');
 //Route::get('/users', 'UsersController@index')->name('users.index');//用户列表
 //Route::get('/users/{user}', 'UsersController@show')->name('users.show');//查看单个用户信息
